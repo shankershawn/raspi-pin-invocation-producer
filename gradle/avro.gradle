@@ -1,0 +1,5 @@
+generateAvroJava {
+    //switch to true when file generation needed from avro
+    // ./gradlew clean generateAvroJava
+    enabled(false)
+}
