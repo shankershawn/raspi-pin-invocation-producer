@@ -1,6 +1,5 @@
-package com.shankarsan.raspi.pin.invoke;
+package com.shankarsan.raspi.pin.invoke.controller;
 
-import com.shankarsan.raspi.pin.invoke.controller.RaspiPinInvokeController;
 import com.shankarsan.raspi.pin.invoke.dto.RaspiPinInvokeRequestDto;
 import com.shankarsan.raspi.pin.invoke.dto.RaspiPinInvokeResponseDto;
 import com.shankarsan.raspi.pin.invoke.service.RaspiPinInvokeService;
@@ -12,8 +11,8 @@ import org.mockito.Mock;
 import org.mockito.internal.verification.VerificationModeFactory;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,8 +25,6 @@ public class RaspiPinInvokeControllerTest {
     private RaspiPinInvokeController raspiPinInvokeController;
 
     private static RaspiPinInvokeRequestDto raspiPinInvokeRequestDto;
-
-    private Object raspiPinInvokeResponseDto;
 
     @BeforeAll
     public static void setup() {
@@ -42,6 +39,7 @@ public class RaspiPinInvokeControllerTest {
 
     @Test
     void shouldPassRaspiPinInvokeService() {
+        Object raspiPinInvokeResponseDto;
         when(raspiPinInvokeService.publishRaspiPinInvokeRequest(any()))
                 .thenReturn(RaspiPinInvokeResponseDto.builder().build());
         raspiPinInvokeResponseDto = raspiPinInvokeController
