@@ -1,5 +1,19 @@
+def exclusionSet = [
+        "**/avro/*",
+        "**/configuration/*",
+        "**/dto/*",
+        "**/exception/*",
+        "**/interceptor/*",
+        "**/validation/*",
+        "**/RaspiPinInvokeProducerApplication.java",
+]
+
 sonarqube {
     properties {
         property 'sonar.coverage.jacoco.xmlReportPath', '${buildDir}/jacoco'
+        property 'sonar.exclusions', exclusionSet
     }
 }
+
+
+

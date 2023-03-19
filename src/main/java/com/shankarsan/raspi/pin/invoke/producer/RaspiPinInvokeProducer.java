@@ -1,6 +1,6 @@
 package com.shankarsan.raspi.pin.invoke.producer;
 
-import com.shankarsan.raspi.pin.invoke.configuration.AppConfiguration;
+import com.shankarsan.raspi.pin.invoke.configuration.ApplicationConfiguration;
 import com.shankarsan.raspi.pin.invoke.dto.avro.RaspiPinInvokePayload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class RaspiPinInvokeProducer {
 
-    private final AppConfiguration appConfiguration;
+    private final ApplicationConfiguration applicationConfiguration;
 
     private final KafkaTemplate<String, RaspiPinInvokePayload> kafkaTemplate;
 
     public void publishRaspiPinInvokePayload(RaspiPinInvokePayload raspiPinInvokePayload) {
-        kafkaTemplate.send(appConfiguration.getTopic(), raspiPinInvokePayload).addCallback(sendResult ->
+        kafkaTemplate.send(applicationConfiguration.getTopic(), raspiPinInvokePayload).addCallback(sendResult ->
                         log.debug("Messaged posted to partition {}, offset {}",
                                 sendResult.getRecordMetadata().partition(),
                                 sendResult.getRecordMetadata().offset())
